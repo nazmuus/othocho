@@ -1,0 +1,32 @@
+# IMPORTANT: Login will not work until a trusted GitHub OAuth proxy is deployed.
+# Replace the URL below with YOUR deployed authentication service URL.
+backend:
+  name: github
+  repo: nazmuus/othocho
+  branch: main
+  base_url: https://YOUR-AUTH-SERVICE.example.com
+  auth_endpoint: auth
+
+site_url: https://nazmuus.github.io/othocho/
+display_url: https://nazmuus.github.io/othocho/
+locale: bn
+media_folder: "images"
+public_folder: "/othocho/images"
+
+collections:
+  - name: "posts"
+    label: "লেখার খাতা"
+    label_singular: "লেখা"
+    folder: "posts"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - {label: "শিরোনাম", name: "title", widget: "string"}
+      - {label: "বিভাগ", name: "category", widget: "select", options: ["ভাবনা", "স্মৃতি", "অনুভূতি", "জীবন"]}
+      - {label: "তারিখ", name: "date", widget: "string", hint: "যেমন: ১৪ নভেম্বর ২০২৬"}
+      - {label: "সংক্ষিপ্ত পরিচিতি", name: "excerpt", widget: "text"}
+      - {label: "মূল লেখা", name: "body", widget: "text"}
+      - {label: "প্রকাশিত", name: "published", widget: "boolean", default: true}
